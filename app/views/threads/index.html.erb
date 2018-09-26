@@ -1,0 +1,8 @@
+<h1>Threads list</h1>
+<% @posts.each do |post| %>
+<ul>
+  <li>
+   <%= link_to(post.content, "/threads/#{post.id}") %>
+  </li>
+</ul>
+<% end %>

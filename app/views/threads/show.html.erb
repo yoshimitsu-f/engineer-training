@@ -1,0 +1,20 @@
+<div class="posts-show-item">
+    <p>
+     <%= @post.content%>
+    </p>
+    <div class="post-time">
+     <%= @post.created_at %>
+    </div>
+    <p>
+      <%= link_to('編集', "/threads/#{@post.id}/edit") %>
+    </p>
+    <p>
+      <%= link_to('削除', "/threads/#{@post.id}/destroy", {method: :'post'}) %>
+    </p>
+    <p>
+      <%= link_to('コメント一覧', "/posts/#{@post.id}/comments") %>
+    </p>
+    <p>
+      <%= link_to('コメント作成', "/posts/#{@post.id}/comments/new") %>
+    </p>
+</div>

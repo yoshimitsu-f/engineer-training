@@ -1,0 +1,7 @@
+<h4>let's comments!</h4>
+<%= form_tag("/posts/#{@comment.post_id}/comments", {method: :'post'}) do %>
+<div class = "create_form">
+  <input name = "body"  />
+  <input type = "submit" value = "comments" />
+</div>
+<% end %>

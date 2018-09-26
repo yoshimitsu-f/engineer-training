@@ -1,0 +1,7 @@
+<h4>edit_comments!</h4>
+<%= form_tag("/posts/#{@comment.post_id}/comments/#{@comment.id}", {method: :'put'}) do %>
+<div class = "edit_comment_form">
+  <input name = "body" value = "<%= @comment.body %>" />
+  <input type = "submit" value = "update" />
+</div>
+<% end %> 
