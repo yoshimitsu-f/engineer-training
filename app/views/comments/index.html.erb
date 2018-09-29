@@ -1,15 +1,12 @@
 <h3>comments</h3>
 <ul>
-  <% @comments.each do |comment| %>
+  <% @post.comments.each do |comment| %>
   <li>
     <%= comment.body %>
-    <%= link_to '[edit]',
-    edit_post_comment_path(@post, comment),
-    class: 'command'%>
-    <%= link_to '[delete]',
-    post_comment_path(@post, comment),
-    method: :delete,
-    class: 'command' %>
+    <% if comment.user_id == current_user.id %>
+      <%= link_to '[edit]', edit_post_comment_path(@post, comment), class: 'command'%>
+      <%= link_to '[delete]', post_comment_path(@post, comment),method: :delete, class: 'command' %>
+    <% end %>
   </li>
   <% end %>
 </ul>

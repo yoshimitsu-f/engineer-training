@@ -1,0 +1,23 @@
+<div class="posts-show-item">
+    <p>
+     <%= @post.content%>
+     <%= @user.email %>
+    </p>
+    <div class="post-time">
+     <%= @post.created_at %>
+    </div>
+    <% if @post.user_id == current_user.id %>
+      <p>
+        <%= link_to('編集', "/posts/#{@post.id}/edit") %>
+      </p>
+      <p>
+        <%= link_to('削除', "/posts/#{@post.id}", { method: :'delete' }) %>
+      </p>
+    <% end %>
+    <p>
+      <%= link_to('コメント一覧', "/posts/#{ @post.id }/comments") %>
+    </p>
+    <p>
+      <%= link_to('コメント作成', "/posts/#{ @post.id }/comments/new") %>
+    </p>
+</div>

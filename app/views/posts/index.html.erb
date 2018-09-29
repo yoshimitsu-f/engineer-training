@@ -1,0 +1,9 @@
+<h1>Threads list</h1>
+<%= flash[:alert] %>
+<% @posts.each do |post| %>
+  <ul>
+    <li>
+     <%= link_to(post.content, "/posts/#{ post.id }") %>
+    </li>
+  </ul>
+<% end %>

@@ -1,7 +1,11 @@
-<h4>let's comments!</h4>
-<%= form_tag("/posts/#{@comment.post_id}/comments", {method: :'post'}) do %>
-<div class = "create_form">
-  <input name = "body"  />
-  <input type = "submit" value = "comments" />
-</div>
+<h4>let's commts!</h4>
+<%= flash[:alert] %>
+<!-- <% if @comment.errors.any? %> -->
+    <ul>
+      <li>hogehoge</li>
+    </ul>
+<!-- <% end %> -->
+<%= form_with url: "/posts/#{ @comment.post_id }/comments", method: :post do |form| %>
+  <%= form.text_field :body  %>
+  <%= form.submit %>
 <% end %>

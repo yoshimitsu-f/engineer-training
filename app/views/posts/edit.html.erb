@@ -1,0 +1,6 @@
+<h4>edit_threads!</h4>
+<%= flash[:alert] %>
+<%= form_with url: "/posts/#{ @post.id }", method: :put do |form| %>
+  <%= form.text_field :content  %>
+  <%= form.submit %>
+<% end %>
