@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create destroy edit update]
-  before_action :ensure_correct_user, only: %i[edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :ensure_correct_user, only: %i[index show create]
 
   def index
     @posts = Post.all.order(created_at: :desc)

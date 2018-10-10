@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create destroy edit update]
-  before_action :ensure_correct_user, only: %i[edit update destroy]
+  before_action :authenticate_user!, except: %i[index]
+  before_action :ensure_correct_user, except: %i[index new create]
 
   def index
     binding.pry
