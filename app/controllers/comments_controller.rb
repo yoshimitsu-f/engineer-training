@@ -5,20 +5,16 @@ class CommentsController < ApplicationController
   before_action :ensure_correct_user, except: %i[index new create]
 
   def index
-    binding.pry
-    @post = Post.find_by(params[:post_id])
+    @post = Post.find(params[:post_id])
     @comments = Comment.page(params[:page]).per(10)
   end
 
   def new
     @comment = Comment.new
-    @post_id = params[:post_id]
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.user = current_user
-    @comment.post_id = params[:post_id]
+    @comment = Comment.new(comment_params.merge(user_id: current_user.id))
     if @comment.save!
       redirect_to(post_comments_path(params[:post_id]))
     else
@@ -48,9 +44,9 @@ class CommentsController < ApplicationController
   private
 
   def ensure_correct_user
-    @comment = Comment.find_by(id: params[:id])
-    @user = @comment.user
-    if @user.mycomment?(@comment)
+    comment = Comment.find(params[:id])
+    @user = User.find(current_user.id)
+    unless @user.mycomment(comment)
       redirect_to posts_path, alert: 'you are not correct_user'
     end
   end

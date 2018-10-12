@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def mycomment?(comment)
-    comment.user_id != id
+  def mycomment(comment)
+    comment.user_id == id
   end
 end

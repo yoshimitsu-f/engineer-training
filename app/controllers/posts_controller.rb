@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :ensure_correct_user, only: %i[index show create]
+  before_action :ensure_correct_user, except: %i[index show create]
 
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -13,7 +13,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
-    @user = User.find_by(params[:post_id])
   end
 
   def create
