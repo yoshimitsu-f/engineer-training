@@ -13,6 +13,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
+    @like = Like.find_by(post_id: params[:id], user_id: current_user.id)
+    @likes_count = @post.likes.count
   end
 
   def create
