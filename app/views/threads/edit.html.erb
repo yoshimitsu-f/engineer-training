@@ -1,5 +1,5 @@
 <h4>edit_threads!</h4>
-<%= form_tag("/threads/#{@post.id}/update") do %>
+<%= form_tag("/posts/#{@post.id}", {method: :'put'}) do %>
 <div class = "create_form">
   <input name = "content"  />
   <input type = "submit" value = "update" />
