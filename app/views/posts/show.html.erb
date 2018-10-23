@@ -14,6 +14,15 @@
         <%= link_to('削除', "/posts/#{@post.id}", { method: :'delete' }) %>
       </p>
     <% end %>
+    <% if @current_user_like.present? %>
+      <%= link_to('いいね！を解除', "/posts/#{@post.id}/likes/#{@current_user_like.id}",{method: :delete}) %>
+    <% else %>
+      <%= link_to('いいね！', "/posts/#{@post.id}/likes", {method: :post}) %>
+    <% end %>
+    <p>
+      いいねの数：
+      <%= @likes_count %>
+    </p>
     <p>
       <%= link_to('コメント一覧', "/posts/#{ @post.id }/comments") %>
     </p>
