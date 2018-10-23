@@ -14,8 +14,8 @@
         <%= link_to('削除', "/posts/#{@post.id}", { method: :'delete' }) %>
       </p>
     <% end %>
-    <% if @like %>
-      <%= link_to('いいね！を解除', "/posts/#{@post.id}/likes/#{@like.id}",{method: :delete}) %>
+    <% if @current_user_like.present? %>
+      <%= link_to('いいね！を解除', "/posts/#{@post.id}/likes/#{@current_user_like.id}",{method: :delete}) %>
     <% else %>
       <%= link_to('いいね！', "/posts/#{@post.id}/likes", {method: :post}) %>
     <% end %>
